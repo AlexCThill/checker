@@ -1,0 +1,30 @@
+{
+    "manifest_version": 2,
+    "name": "Customer Email Cart Finder",
+    "version": "1.0",
+    "description": "Finds customer emails with carts and displays them in a popup.",
+    "permissions": [
+      "tabs",
+      "activeTab"
+    ],
+    "browser_action": {
+      "default_title": "Customer Email Cart Finder"
+    },
+    "background": {
+      "scripts": ["background.js"],
+      "persistent": false
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://www.lumens.com/csc/search-customer/"],
+        "js": ["content.js"]
+      }
+    ],
+    "web_accessible_resources": [
+      "popup.html"
+    ],
+    "icons": {
+      "48": "icon.png"
+    }
+  }
+  

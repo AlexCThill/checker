@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Customer Emails with Carts</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      padding: 5px;
+      border-bottom: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h2>Customer Emails with Carts</h2>
+  <ul id="emailList"></ul>
+
+  <script>
+    // This script will get the emails from the background script and display them in the popup
+    chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+      if (request.action === "showEmails") {
+        const emailList = document.getElementById("emailList");
+        const emails = request.emails;
+
+        emails.forEach(email => {
+          const li = document.createElement("li");
+          li.textContent = email;
+          emailList.appendChild(li);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
